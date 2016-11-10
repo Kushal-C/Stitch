@@ -1,27 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/activity_discover"
+    android:id="@+id/activity_login_or_signup"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="#ffffff"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.kushalc.stitch.DiscoverActivity">
-
-    <ImageView
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        app:srcCompat="@drawable/logo"
-        android:layout_marginTop="102dp"
-        android:id="@+id/imageView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+    tools:context="me.kushalc.stitch.LoginOrSignup"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
         android:text="Signup"
@@ -45,6 +34,13 @@
         android:layout_marginBottom="15dp"
         android:layout_alignParentEnd="true"/>
 
-
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        app:srcCompat="@drawable/logo"
+        android:layout_marginTop="102dp"
+        android:id="@+id/imageView"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
