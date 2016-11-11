@@ -13,23 +13,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:text="Signup"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="47dp"
-        android:id="@+id/button2"
-        android:background="@drawable/loginbutton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/button_login_one"
-        android:layout_alignParentEnd="true"/>
-
-    <Button
         android:text="Login"
         android:layout_width="40dp"
         android:layout_height="wrap_content"
         android:id="@+id/button_login_one"
         android:background="@drawable/loginbutton"
-        android:layout_above="@+id/button2"
+        android:gravity="left"
+        android:textSize="16sp"
+        android:layout_above="@+id/button_signup_one"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="15dp"
         android:layout_alignParentEnd="true"/>
@@ -37,10 +28,20 @@
     <ImageView
         android:layout_width="125dp"
         android:layout_height="125dp"
-        app:srcCompat="@drawable/logo"
+        app:srcCompat="@drawable/logo2"
         android:layout_marginTop="102dp"
         android:id="@+id/imageView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:text="Signup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="49dp"
+        android:id="@+id/button_signup_one"
+        android:background="@drawable/loginbutton"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"/>
 
 </RelativeLayout>
