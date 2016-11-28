@@ -7,7 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class SearchActivity extends AppCompatActivity
 {
@@ -17,6 +23,7 @@ public class SearchActivity extends AppCompatActivity
     private TextView navBarText;
     private EditText query;
 
+    private List<Item> mItemList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,6 +39,14 @@ public class SearchActivity extends AppCompatActivity
 
         defaultToolbar = (Toolbar)findViewById(R.id.my_toolbar);
         searchToolbar = (Toolbar)findViewById(R.id.my_toolbar_2);
+
+        ListView listView = (ListView)findViewById(R.id.search_list_view_items);
+
+        populateItemList();
+
+        SearchAdapter searchAdapter = new SearchAdapter(this, mItemList);
+        listView.setAdapter(searchAdapter);
+
     }
 
     private void setFonts()
@@ -59,6 +74,24 @@ public class SearchActivity extends AppCompatActivity
             String queryText = query.getText().toString();
             queryApi(queryText);
         }
+    }
+
+    //Populate item list
+    private void populateItemList()
+    {
+        //Passing in Mock Data
+        ArrayList<ImageView> imageViews = new ArrayList<>();
+        ImageView imageView = new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.blue_oxford);
+        imageViews.add(imageView);
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("Blue", 5);
+
+        Item a = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair", true, false, 16.78, 0,
+                imageViews, hashMap);
+
+        mItemList.add(a);
     }
 
     /*
