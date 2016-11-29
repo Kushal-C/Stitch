@@ -1,14 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     android:id="@+id/activity_item_detail"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="me.kushalc.stitch.ItemDetail">
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="me.kushalc.stitch.ItemDetail"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</RelativeLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#ffffff"
+        android:elevation="4dp"
+        android:gravity="top|start"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:src="@drawable/menu"
+            android:id="@+id/item_detail_nav_bar_menu"
+            android:onClick="openNavbar"
+            android:background="#fff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text="Discover"
+            android:layout_marginTop="18dp"
+            android:id="@+id/item_detail_nav_bar_title"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:background="#fff"
+            android:textColor="#4A4A4A"/>
+
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/map_icon"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:background="#fff"
+            android:onClick="map"
+            android:id="@+id/item_detail_nav_bar_map"/>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="HM Valley Fair"
+            android:layout_width="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:paddingLeft="10dp"
+            android:id="@+id/item_detail_view_shop_name"
+            />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/favorite_unfilled"
+            android:id="@+id/item_detail_button_favorite"
+            android:onClick="favorite"
+            android:paddingRight="10dp"
+            android:background="#fff"/>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/blue_oxford"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:id="@+id/item_detail_view_product"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:text="Blue Oxford Shirt"
+            android:layout_width="wrap_content"
+            android:layout_weight="1.0"
+            android:layout_height="wrap_content"
+            android:textAlignment="viewStart"
+            android:paddingLeft="10dp"
+            android:id="@+id/item_detail_text_view_item_name"
+            />
+
+        <TextView
+            android:text="Discounted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/item_detail_text_view_discounted_price"
+
+            />
+
+        <TextView
+            android:text="Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:id="@+id/item_detail_text_view_price"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="30dp"/>
+
+    <Spinner
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/background"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/item_detail_spinner_color"
+        android:textAlignment="center"
+        android:layout_marginTop="30dp"
+        android:spinnerMode="dialog"/>
+
+    <Spinner
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:background="@drawable/background"
+        android:layout_gravity="center_horizontal"
+        android:textAlignment="center"
+        android:id="@+id/item_detail_spinner_size"
+        android:spinnerMode="dialog"
+        android:layout_marginTop="30dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginTop="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/item_detail_button_cart"
+            android:textSize="15sp"
+            android:onClick="addToCart"
+            android:background="#fff"
+            android:text="Add to Cart"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/item_detail_button_hold"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:background="#fff"
+            android:onClick="hold"
+            android:text="Hold Item"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

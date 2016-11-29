@@ -3,6 +3,8 @@ package me.kushalc.stitch;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -86,7 +88,10 @@ public class SearchAdapter extends BaseAdapter implements ListView.OnItemClickLi
         itemName.setText(a.getItemName());
         price.setText(Double.toString(a.getPrice()));
         discountedPrice.setText(Double.toString(a.getDiscountedPrice()));
-        productImage.setImageDrawable(a.getImageViews().get(i).getDrawable());
+
+        byte[] bytes = a.getImageViews().get(0);
+        Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        productImage.setImageBitmap(bmp);
 
         if(a.isFavorite())
         {

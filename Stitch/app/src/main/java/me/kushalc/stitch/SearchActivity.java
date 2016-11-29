@@ -1,16 +1,18 @@
 package me.kushalc.stitch;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -80,16 +82,20 @@ public class SearchActivity extends AppCompatActivity
     private void populateItemList()
     {
         //Passing in Mock Data
-        ArrayList<ImageView> imageViews = new ArrayList<>();
-        ImageView imageView = new ImageView(getApplicationContext());
-        imageView.setImageResource(R.drawable.blue_oxford);
-        imageViews.add(imageView);
+        Bitmap bitmap = BitmapFactory.decodeResource(getApplicationContext().getResources(), R.drawable.blue_oxford);
+        ArrayList<byte[]> bm = new ArrayList<>();
+
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] bytes = stream.toByteArray();
+        bm.add(bytes);
+
 
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("Blue", 5);
 
-        Item a = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair", true, false, 16.78, 0,
-                imageViews, hashMap);
+        Item a = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair", true, true, 16.78, 13.32,
+                bm, hashMap);
 
         mItemList.add(a);
     }

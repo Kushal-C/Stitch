@@ -2,7 +2,6 @@ package me.kushalc.stitch;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,12 +30,12 @@ public class Item implements Parcelable {
     private double price = 0;
     private double discountedPrice = 0;
     //To store all product images
-    ArrayList<ImageView> mImageViews = new ArrayList<>();
+    ArrayList<byte[]> mImageBitmaps = new ArrayList<>();
     //To store colors & sizes possibilities
     HashMap<String,Integer> clothingOptions = new HashMap<String,Integer>();
 
     public Item(String brand, String itemName, String type, String location, boolean favorite,
-                boolean discount, double price, double discountedPrice, ArrayList<ImageView> imageViews,
+                boolean discount, double price, double discountedPrice, ArrayList<byte[]> imageViews,
                 HashMap<String, Integer> clothingOptions) {
 
         this.brand = brand;
@@ -47,7 +46,7 @@ public class Item implements Parcelable {
         this.discount = discount;
         this.price = price;
         this.discountedPrice = discountedPrice;
-        mImageViews = imageViews;
+        mImageBitmaps = imageViews;
         this.clothingOptions = clothingOptions;
     }
 
@@ -120,12 +119,12 @@ public class Item implements Parcelable {
         this.discountedPrice = discountedPrice;
     }
 
-    public ArrayList<ImageView> getImageViews() {
-        return mImageViews;
+    public ArrayList<byte[]> getImageViews() {
+        return mImageBitmaps;
     }
 
-    public void setImageViews(ArrayList<ImageView> imageViews) {
-        mImageViews = imageViews;
+    public void setImageViews(ArrayList<byte[]> imageViews) {
+        mImageBitmaps = imageViews;
     }
 
     public HashMap<String, Integer> getClothingOptions() {
@@ -146,10 +145,10 @@ public class Item implements Parcelable {
         price = in.readDouble();
         discountedPrice = in.readDouble();
         if (in.readByte() == 0x01) {
-            mImageViews = new ArrayList<ImageView>();
-            in.readList(mImageViews, ImageView.class.getClassLoader());
+            mImageBitmaps = new ArrayList<byte[]>();
+            in.readList(mImageBitmaps, byte[].class.getClassLoader());
         } else {
-            mImageViews = null;
+            mImageBitmaps = null;
         }
         clothingOptions = (HashMap) in.readValue(HashMap.class.getClassLoader());
     }
@@ -169,11 +168,11 @@ public class Item implements Parcelable {
         dest.writeByte((byte) (discount ? 0x01 : 0x00));
         dest.writeDouble(price);
         dest.writeDouble(discountedPrice);
-        if (mImageViews == null) {
+        if (mImageBitmaps == null) {
             dest.writeByte((byte) (0x00));
         } else {
             dest.writeByte((byte) (0x01));
-            dest.writeList(mImageViews);
+            dest.writeList(mImageBitmaps);
         }
         dest.writeValue(clothingOptions);
     }
