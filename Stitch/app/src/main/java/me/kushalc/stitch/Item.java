@@ -22,6 +22,8 @@ public class Item implements Parcelable {
     private String type = "";
     //What physical location it is stored in
     private String location = "";
+    //What address is the product located at
+    private String address = "";
     //Is it favorited
     private boolean favorite = false;
     //Is it discounted
@@ -34,7 +36,7 @@ public class Item implements Parcelable {
     //To store colors & sizes possibilities
     HashMap<String,Integer> clothingOptions = new HashMap<String,Integer>();
 
-    public Item(String brand, String itemName, String type, String location, boolean favorite,
+    public Item(String brand, String itemName, String type, String location, String address, boolean favorite,
                 boolean discount, double price, double discountedPrice, ArrayList<byte[]> imageViews,
                 HashMap<String, Integer> clothingOptions) {
 
@@ -42,6 +44,7 @@ public class Item implements Parcelable {
         this.itemName = itemName;
         this.type = type;
         this.location = location;
+        this.address = address;
         this.favorite = favorite;
         this.discount = discount;
         this.price = price;
@@ -85,6 +88,14 @@ public class Item implements Parcelable {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public boolean isFavorite() {
@@ -140,6 +151,7 @@ public class Item implements Parcelable {
         itemName = in.readString();
         type = in.readString();
         location = in.readString();
+        address = in.readString();
         favorite = in.readByte() != 0x00;
         discount = in.readByte() != 0x00;
         price = in.readDouble();
@@ -164,6 +176,7 @@ public class Item implements Parcelable {
         dest.writeString(itemName);
         dest.writeString(type);
         dest.writeString(location);
+        dest.writeString(address);
         dest.writeByte((byte) (favorite ? 0x01 : 0x00));
         dest.writeByte((byte) (discount ? 0x01 : 0x00));
         dest.writeDouble(price);

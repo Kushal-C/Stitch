@@ -94,10 +94,14 @@ public class SearchActivity extends AppCompatActivity
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("Blue", 5);
 
-        Item a = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair", true, true, 16.78, 13.32,
+        Item a = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair", "2855 Stevens Creek Blvd,\n Santa Clara, CA 95050", true, true, 16.78, 13.32,
+                bm, hashMap);
+
+        Item b = new Item("H&M","Blue Oxford Shirt","Shirt","H&M Valley Fair","2855 Stevens Creek Blvd,\n Santa Clara, CA 95050" ,true, true, 16.78, 13.32,
                 bm, hashMap);
 
         mItemList.add(a);
+        mItemList.add(b);
     }
 
     /*

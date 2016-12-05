@@ -98,6 +98,7 @@ public class ItemDetail extends AppCompatActivity
     public void map(View view)
     {
         Intent i = new Intent(getApplicationContext(),MapsActivity.class);
+        i.putExtra("Item",mItem);
         startActivity(i);
     }
 
