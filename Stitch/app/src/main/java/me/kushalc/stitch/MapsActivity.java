@@ -141,6 +141,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    //Opens navigation drawer
+    public void openNavbar(View view)
+    {
+
+    }
+
     //Future function to add multiple locations on the map to order from
     public void populateMap()
     {
